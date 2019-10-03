@@ -1,0 +1,267 @@
+@import './modules/variables';
+
+@import'./modules/mixins';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
+
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0px;
+}
+img{
+    max-width: 100%;
+}
+figure{
+    position: relative;
+    max-height: 100%;
+    margin: 0px;
+    figcaption{
+        @include caption;
+    }
+    img{
+
+    }
+}
+
+.full-height{
+    min-height: 100vh;
+}
+    .btn{
+        padding: $large-padding;
+        position: relative;
+        color: $black !important;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        box-sizing: border-box;
+        &::before{
+            content: '';
+            position: absolute;
+             width: 100%;
+             left: 0px;
+             bottom: 0px;
+             height: 100%;
+             z-index: -1;
+            background-color: $light-blue;
+            transition: all 0.15s ease-out;
+        }
+        &:hover::before{
+           height: 100%; 
+        }
+     }
+    figure:hover{}
+
+.grid{
+ 
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+   
+}
+
+.grid-main-area{
+    display: grid;
+    grid-template-columns: repeat(9,1fr);
+    margin-top: $big-margin-top;
+    margin-bottom: $big-margin-top;
+    grid-template-areas: 
+    "title title title title title title title title title"
+    "image image image image image image image image image";
+    .text{
+        grid-area: title;
+       @include main-text;
+
+    }
+}
+
+.image{
+grid-area: image;
+}
+
+.container{
+    grid-column: span 12;
+padding: $big-padding;
+}
+.cover{
+    @include absolute-cover;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    
+ &.parallax{
+background-image: url(/assets/public/images/italian-pizza-restaurant-dinner.jpg);
+background-attachment: fixed;
+position: relative;
+p{
+@include caption;
+background-color: rgba($blue,0.8);
+display: block;
+width: 100%;
+box-sizing: border-box;
+left: 0px;
+@include text-right;
+span{
+    display: block;
+    font-size: 0.5em;
+    font-weight: 200;
+    margin-top: 6px;
+}
+}
+}
+}
+ .slider{
+     .controls{
+         display: none;
+         text-align: right;
+         margin-bottom: 10px;
+         padding: 2em;
+         .right-arrow,.left-arrow{
+            height: 70px;
+            @include transition;
+            transition-duration: 0.15s;
+            cursor: pointer;
+
+            &:hover{
+                opacity: 0.2;
+            }
+         }
+         .left-arrow{
+             margin-right: 1.5em;
+             transform: rotate(180deg);
+         
+            }    
+         }
+     .image{
+         min-height: 100vh;
+         display: flex;
+         align-items: center;
+     }
+     header{
+         background-color: $blue;
+         color: $white;
+         padding:$big-padding;
+         transform: translateY(40px);
+         width: 80%;
+         box-sizing: border-box;
+         margin:0 auto;
+         z-index: 10;
+         position: relative;
+         h2{
+             margin: 0px;
+         }
+         .separator{
+             text-align: right;
+             padding-right: 150px;
+             position: relative;
+             color: $red;
+             display: inline-block;
+            &::after{
+                position: absolute;
+                content: '';
+                height: 3px;
+                width: 140px;
+                background-color:currentColor;
+                top: 0.8em;
+                right: 0px;
+
+
+            }
+         }
+         }
+
+     }
+ 
+ #slider-text-content{
+     @include transition;
+     &.hide{
+        opacity: 0;
+        transform: translateX(200px);
+     }
+ }
+  #slider-image{
+    @include transition;
+    &.hide{
+        opacity: 0;
+
+    }
+  }
+.mission{
+align-items: center;
+justify-content: center;
+
+    .container{
+        @include main-text;
+        font-size: 1.1em;
+        figure{
+            float: right;
+        }
+        p{
+            line-height: 2em;
+            &:nth-of-type(1){
+                margin-bottom: 3em;
+                position: relative;
+                &::after{
+                    content: '';
+                    background-color: $blue;
+                    position: absolute;
+                    bottom: -1.5em;
+                    height:3px;
+                    width: 300px;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}
+#mapa{
+    width: 100%;
+    min-height: 600px;
+    margin-top: $big-margin-top;
+}
+.social{
+    margin-top: $big-margin-top;
+    margin-bottom: $big-margin-top;
+    @include text-center;
+    p.title{
+        font-weight: 200;
+        font-size: 2.5em;
+    }
+    a{
+        display: block;
+        
+        max-width: 150px;
+        margin: 1em auto;
+
+    }
+}
+@media (min-width: 960px){
+    .container{
+        grid-column: 2 / 12;
+    }
+
+    .grid-main-area{
+        display: grid;
+        grid-template-columns: repeat(9,1fr);
+        grid-template-areas: 
+        "title title title title image image image image image"
+        
+    }
+    .slider{
+        align-items: center;
+        header{
+            transform: translateX(100px);
+            width: 100%;
+            min-height: 350px;
+        }
+    }
+    .social{
+        margin-top: 5px;
+        a{
+            display: inline-block;
+            margin-top: 0px;
+            margin-right: 90px;
+            &:last-of-type{
+                margin-right: 0px;
+            }
+
+        }
+    }
+}

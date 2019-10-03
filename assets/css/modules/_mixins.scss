@@ -1,0 +1,52 @@
+@mixin  full {
+  widows: 100%; 
+  height: 100%;
+}
+@mixin text-center {
+    text-align: center;
+}
+@mixin text-right {
+  text-align: right;
+  
+}
+@mixin center-vertical-horizontal {
+display: flex;
+align-items: center;
+justify-content: center;    
+}
+@mixin absolute-cover {
+    @include full;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+}
+@mixin caption {
+  padding: $large-padding;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 2em;
+        position: absolute;
+        width: auto;
+        bottom: 0px;
+        left: 10px;
+        z-index: 10;
+        @include text-center;
+        color: rgba($grey, 0.5);
+        letter-spacing: 5px;
+}
+@mixin  main-text {
+  font-weight: 200;
+ 
+  font-size: 1.2em;
+  line-height: 1.5em;
+  h1, h2{
+      font-size: $big;
+      font-weight: inherit;
+      letter-spacing: 0.3em;
+      line-height: 1.5em;
+  
+}
+}
+@mixin transition {
+  transition: all 0.6s ease-out;
+}
