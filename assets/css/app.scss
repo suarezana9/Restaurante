@@ -56,6 +56,90 @@ figure{
     grid-template-columns: repeat(12,1fr);
    
 }
+.menu{
+    position: fixed;
+    top: 2em;
+    right: 2em;
+    border-radius: 60px;
+    width: 60px;
+    @include center-vertical-horizontal;
+    background-color: white;
+    cursor: pointer;
+    &:hover{
+        background-color: $light-blue;
+        
+
+    }
+img{
+    height: 50px;
+    @include transition;
+    transition-duration: 0.15s;
+    
+}
+}
+.menu-screen{
+    background-color:white ;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 100;
+    top: -101vh;
+    @include center-vertical-horizontal;
+
+    .close{
+        position: absolute;
+        top:1em;
+        right: 1em;
+        img{
+            height: 45px;
+        }
+    }
+    &.active{
+       top:0; 
+    }
+    a{
+        display: block;
+        text-decoration: none;
+        @include text-center;
+        position: relative;
+        margin-top: 1em;
+        &:first-of-type{margin-top: 0;}
+        .main{
+            display: block;
+            font-size: 2em;
+            color: $light-blue;
+
+        }
+        span:not(.main){
+            color: $rose;
+            opacity: 0;
+            @include transition;
+            transition-duration: 0.2s;
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: 1.2em;
+            left: 0;
+            width: 100%;
+        height: 2px;
+        background-color: $blue;
+        @include transition;
+        transition-duration: 0.2s;
+        transform: scale(0);
+
+        }
+        &:hover{
+            color: $blue;
+        }
+        &:hover::after{
+            transform: scale(1);
+        }
+        &:hover span:not(.main){
+        opacity: 1;
+        }
+    }
+}
 
 .grid-main-area{
     display: grid;
