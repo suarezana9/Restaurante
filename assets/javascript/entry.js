@@ -2,14 +2,18 @@ import '../css/app.scss';
 import './slider/sliderDOM';
 
 import './maps';
-
-document.querySelector(".menu")
-.addEventListener("click",function(){
-    document.querySelector(".menu-screen").classList.add("active");
-})
+import './menu';
 
 
-document.querySelector(".close")
-.addEventListener("click",function(){
-    document.querySelector(".menu-screen").classList.remove("active");
-})
+if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function(){
+            navigator.serviceWorker.register('assets/sw.js').then (function(){
+                console.log('ServiceWorker registered');
+            })
+            .catch(function(err){
+                console.log('ServiceWorker failed', err);
+            });
+
+    });
+
+}

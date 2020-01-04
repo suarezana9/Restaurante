@@ -9,13 +9,14 @@ function initMap(){
     let map = new google.maps.Map (document.getElementById('mapa'),{
         center:coords,
         zoom:15,
-        styles:styles
+        styles: styles
+       
     });
-    let market = new google.maps.Marker({
+    let marker = new google.maps.Marker({
         position:coords,
-        map,
+        map:map,
         title:'Resto, Bar & Pizzas'
-    })
+    });
 
 }
 initMap();
